@@ -4,7 +4,7 @@ type MainPageProps = {
   hotelsCount: number;
 }
 
-function MainPage({hotelsCount}: MainPageProps): JSX.Element {
+function MainScreen({hotelsCount}: MainPageProps): JSX.Element {
   return (
     <>
       <div style={{display: 'none'}}>
@@ -135,4 +135,4 @@ function MainPage({hotelsCount}: MainPageProps): JSX.Element {
   );
 }
 
-export default MainPage;
+export default MainScreen;
