@@ -1,4 +1,4 @@
-function PropertyNotLogged(): JSX.Element {
+function RoomNotLogged(): JSX.Element {
   return (
     <>
       <div style={{display: 'none'}}>
@@ -323,4 +323,4 @@ function PropertyNotLogged(): JSX.Element {
   );
 }
 
-export default PropertyNotLogged;
+export default RoomNotLogged;

@@ -1,5 +1,5 @@
 
-function PropertyPage(): JSX.Element {
+function RoomScreen(): JSX.Element {
   return (
     <>
       <div style={{display: 'none'}}>
@@ -389,4 +389,4 @@ function PropertyPage(): JSX.Element {
   );
 }
 
-export default PropertyPage;
+export default RoomScreen;

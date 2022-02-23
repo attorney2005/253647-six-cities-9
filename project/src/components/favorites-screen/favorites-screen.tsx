@@ -1,4 +1,4 @@
-function FavoritesPage(): JSX.Element {
+function FavoritesScreen(): JSX.Element {
   return (
     <>
       <div style={{display: 'none'}}>
@@ -205,4 +205,4 @@ function FavoritesPage(): JSX.Element {
   );
 }
 
-export default FavoritesPage;
+export default FavoritesScreen;
