@@ -9,7 +9,6 @@ import {HOSTEL_COUNT, AppRoute, AuthorizationStatus} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
 
 function App(): JSX.Element {
-  // @ts-ignore
   return (
     <BrowserRouter>
       <Routes>
