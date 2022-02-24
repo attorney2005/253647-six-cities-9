@@ -5,7 +5,7 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFound from '../not-found/not-found';
-import {HOSTEL_COUNT, AppRoute, AuthorizationStatus} from '../../constant';
+import {HOTELS_COUNT, AppRoute, AuthorizationStatus} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
 
 function App(): JSX.Element {
@@ -18,7 +18,7 @@ function App(): JSX.Element {
         >
           <Route
             path={AppRoute.Main}
-            element={<MainScreen offersCount={HOSTEL_COUNT}/>}
+            element={<MainScreen hotelsCount={HOTELS_COUNT}/>}
           />
           <Route
             path={AppRoute.Sign_In}
