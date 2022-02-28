@@ -1,4 +1,4 @@
-import OfferCard from '../offer-card/offer-card';
+import OfferCards from '../offer-cards/offer-cards';
 import {Offer} from '../../types/offer';
 
 type MainPageProps = {
@@ -87,7 +87,7 @@ function MainScreen({hotelsCount, offers}: MainPageProps): JSX.Element {
                     <li className="places__option" tabIndex={0}>Top rated first</li>
                   </ul>
                 </form>
-                <OfferCard
+                <OfferCards
                   offers={offers}
                 />
               </section>
