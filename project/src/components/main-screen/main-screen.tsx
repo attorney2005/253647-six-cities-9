@@ -1,10 +1,12 @@
 import OfferCard from '../offer-card/offer-card';
+import {Offer} from '../../types/offer';
 
 type MainPageProps = {
   hotelsCount: number;
+  offers: Offer[]
 }
 
-function MainScreen({hotelsCount}: MainPageProps): JSX.Element {
+function MainScreen({hotelsCount, offers}: MainPageProps): JSX.Element {
   return (
     <>
       <div style={{display: 'none'}}>
@@ -20,7 +22,7 @@ function MainScreen({hotelsCount}: MainPageProps): JSX.Element {
           </symbol>
           <symbol id="icon-star" viewBox="0 0 13 12">
             <path fillRule="evenodd" clipRule="evenodd"
-              d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"
+                  d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"
             >
             </path>
           </symbol>
@@ -85,13 +87,9 @@ function MainScreen({hotelsCount}: MainPageProps): JSX.Element {
                     <li className="places__option" tabIndex={0}>Top rated first</li>
                   </ul>
                 </form>
-                <div className="cities__places-list places__list tabs__content">
-                  <OfferCard></OfferCard>
-                  <OfferCard></OfferCard>
-                  <OfferCard></OfferCard>
-                  <OfferCard></OfferCard>
-                  <OfferCard></OfferCard>
-                </div>
+                <OfferCard
+                  offers={offers}
+                />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map"></section>

@@ -163,13 +163,6 @@ function FavoritesScreen(): JSX.Element {
             </section>
           </div>
         </main>
-        <footer className="footer container">
-          <a className="footer__logo-link" href="main-page.html">
-            <img className="footer__logo" src="/project/public/img/logo.svg" alt="6 cities logo" width="64"
-              height="33"
-            />
-          </a>
-        </footer>
       </div>
     </>
   );
