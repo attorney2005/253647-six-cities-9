@@ -1,5 +1,21 @@
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { offers } from '../../mocks/offers';
+import { Review } from '../../types/review';
 
-function RoomScreen(): JSX.Element {
+type RoomScreenProps = {
+  reviews: Review[]
+};
+
+function RoomScreen({reviews}: RoomScreenProps){
+  const location = useLocation();
+  const pathElements = location.pathname.split('/');
+  const offerId =  parseInt(pathElements[pathElements.length - 1], 10);
+  const [offer] = offers.filter((currentOffer) =>
+    currentOffer.id === offerId);
+
+  const nearOffers = offers.slice(0, 3);
+
   return (
     <>
       <div className="page">
@@ -7,24 +23,21 @@ function RoomScreen(): JSX.Element {
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="../project/public/img/room.jpg" alt="Photo studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="../project/public/img/apartment-01.jpg" alt="Photo studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="../project/public/img/apartment-02.jpg" alt="Photo studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="../project/public/img/apartment-03.jpg" alt="Photo studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="../project/public/img/studio-01.jpg" alt="Photo studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="../project/public/img/apartment-01.jpg" alt="Photo studio"/>
-                </div>
+                {
+                  offer.images.map((image) =>
+                    (
+                      <div
+                        className="property__image-wrapper"
+                        key={image}
+                      >
+                        <img
+                          className="property__image"
+                          src={image}
+                          alt="Ph studio"
+                        />
+                      </div>
+                    ))
+                }
               </div>
             </div>
             <div className="property__container container">

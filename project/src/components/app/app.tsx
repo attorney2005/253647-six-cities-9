@@ -5,7 +5,7 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFound from '../not-found/not-found';
-import {HOTELS_COUNT, AppRoute, AuthorizationStatus} from '../../constant';
+import {AppRoute, AuthorizationStatus} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
 import {Offer} from '../../types/offer';
 import {Review} from '../../types/review';
@@ -26,7 +26,7 @@ function App({hotelsCount, offers, reviews}: AppProps): JSX.Element {
         >
           <Route
             path={AppRoute.Main}
-            element={<MainScreen hotelsCount={HOTELS_COUNT}
+            element={<MainScreen hotelsCount={hotelsCount}
                                  offers={offers}/>}
           />
           <Route
