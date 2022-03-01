@@ -47,7 +47,7 @@ function RoomScreen({reviews}: RoomScreenProps){
                 </div>
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
-                    Beautiful &amp; luxurious studio at great location
+                    {offer.header}
                   </h1>
                   <button className="property__bookmark-button button" type="button">
                     <svg className="property__bookmark-icon" width="31" height="33">
@@ -65,64 +65,45 @@ function RoomScreen({reviews}: RoomScreenProps){
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    Apartment
+                    {offer.houseType}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    3 Bedrooms
+                    {offer.bedroomsCount} Bedrooms
                   </li>
                   <li className="property__feature property__feature--adults">
-                    Max 4 adults
+                    Max {offer.guestsCount} adults
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">&euro;120</b>
+                  <b className="property__price-value">{offer.price}</b>
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
-                    <li className="property__inside-item">
-                      Wi-Fi
-                    </li>
-                    <li className="property__inside-item">
-                      Washing machine
-                    </li>
-                    <li className="property__inside-item">
-                      Towels
-                    </li>
-                    <li className="property__inside-item">
-                      Heating
-                    </li>
-                    <li className="property__inside-item">
-                      Coffee machine
-                    </li>
-                    <li className="property__inside-item">
-                      Baby seat
-                    </li>
-                    <li className="property__inside-item">
-                      Kitchen
-                    </li>
-                    <li className="property__inside-item">
-                      Dishwasher
-                    </li>
-                    <li className="property__inside-item">
-                      Cabel TV
-                    </li>
-                    <li className="property__inside-item">
-                      Fridge
-                    </li>
+                    {
+                      offer.householdItems.map((household) => (
+                        <li
+                          className="property__inside-item"
+                          key={household}
+                        >
+                          {household}
+                        </li>
+                      ))
+                    }
                   </ul>
                 </div>
                 <div className="property__host">
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src="../project/public/img/avatar-angelina.jpg"
+                      <img className="property__avatar user__avatar"
+                           src={offer.owner.avatarImage}
                         width="74" height="74" alt="Host avatar"
                       />
                     </div>
                     <span className="property__user-name">
-                    Angelina
+                    {offer.owner.name}
                     </span>
                     <span className="property__user-status">
                     Pro
@@ -130,8 +111,7 @@ function RoomScreen({reviews}: RoomScreenProps){
                   </div>
                   <div className="property__description">
                     <p className="property__text">
-                      A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The
-                      building is green and from 18th century.
+                      {offer.description}
                     </p>
                     <p className="property__text">
                       An independent House, strategically located between Rembrand Square and National Opera, but where
