@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app';
 import { offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
-import {HOTELS_COUNT} from "./constant";
 
 const Setting = {
   HOTELS_COUNT: 312,
