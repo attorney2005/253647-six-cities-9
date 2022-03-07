@@ -6,7 +6,13 @@ type FavoritesScreenProps = {
 };
 
 type GroupedOffers = {
-  [key: string]: Offer[]
+  Paris: Offer[],
+  Cologne: Offer[],
+  Brussels: Offer[],
+  Amsterdam: Offer[],
+  Hamburg: Offer[],
+  Dusseldorf: Offer[]
+
 }
 
 function FavoritesScreen({offers}: FavoritesScreenProps) {

@@ -12,10 +12,11 @@ function RoomScreen({reviews}: RoomScreenProps) {
   const location = useLocation();
   const pathElements = location.pathname.split('/');
   const offerId = parseInt(pathElements[pathElements.length - 1], 10);
-  const [offer] = offers.filter((currentOffer) =>
-    currentOffer.id === offerId);
+  const offer = offers.find((currentOffer) => currentOffer.id === offerId);
 
-  // const nearOffers = offers.slice(0, 3);
+  if (!offer) {
+    return <h1>Offer not found</h1>;
+  }
 
   return (
     <div className="page">
@@ -71,7 +72,7 @@ function RoomScreen({reviews}: RoomScreenProps) {
                   {offer.bedroomsCount} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                    Max {offer.guestsCount} adults
+                  Max {offer.guestsCount} adults
                 </li>
               </ul>
               <div className="property__price">
@@ -114,8 +115,8 @@ function RoomScreen({reviews}: RoomScreenProps) {
                     {offer.description}
                   </p>
                   <p className="property__text">
-                      An independent House, strategically located between Rembrand Square and National Opera, but where
-                      the bustle of the city comes to rest in this alley flowery and colorful.
+                    An independent House, strategically located between Rembrand Square and National Opera, but where
+                    the bustle of the city comes to rest in this alley flowery and colorful.
                   </p>
                 </div>
               </div>
