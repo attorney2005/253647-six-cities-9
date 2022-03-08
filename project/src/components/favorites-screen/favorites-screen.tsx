@@ -1,29 +1,21 @@
-import { Offer } from '../../types/offer';
+import {Offer} from '../../types/offer';
 import CityRentalOffers from '../city-offers/city-offers';
 
 type FavoritesScreenProps = {
   offers: Offer[]
 };
 
-type GroupedOffers = {
-  Paris: Offer[],
-  Cologne: Offer[],
-  Brussels: Offer[],
-  Amsterdam: Offer[],
-  Hamburg: Offer[],
-  Dusseldorf: Offer[]
-
-}
-
 function FavoritesScreen({offers}: FavoritesScreenProps) {
-  const groupedOffers: GroupedOffers = {};
+  const groupedOffers: {
+    [groupName: string]: Offer[]
+  } = {};
   offers.forEach((offer) => {
     const cityName = offer.city.name;
-    if (groupedOffers[cityName] === undefined) {
+    if (cityName in groupedOffers) {
+      groupedOffers[cityName].push(offer);
+    } else {
       groupedOffers[cityName] = [];
     }
-
-    groupedOffers[cityName].push(offer);
   });
 
   return (

@@ -27,7 +27,7 @@ export const offers: Offer[] = [
       name: 'Angelina',
     },
     city: {
-      name: 'Amsterdam',
+      name: 'Paris',
       location: {
         latitude: 1,
         longitude: 1,
@@ -63,7 +63,7 @@ export const offers: Offer[] = [
       name: 'Max',
     },
     city: {
-      name: 'Amsterdam',
+      name: 'Cologne',
       location: {
         latitude: 1,
         longitude: 1,
@@ -99,7 +99,7 @@ export const offers: Offer[] = [
       name: 'Angelina',
     },
     city: {
-      name: 'Amsterdam',
+      name: 'Brussels',
       location: {
         latitude: 1,
         longitude: 1,
@@ -135,7 +135,7 @@ export const offers: Offer[] = [
       name: 'Max',
     },
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
         latitude: 2,
         longitude: 2,
@@ -146,6 +146,84 @@ export const offers: Offer[] = [
       latitude: 2,
       longitude: 2,
       zoom: 10,
+    },
+  },
+  {
+    id: 5,
+    previewImage: 'img/apartment-01.jpg',
+    isPremium: true,
+    price: 120,
+    header: 'Beautiful & luxurious apartment at great location',
+    houseType: HouseType.Apartment,
+    isFavorite: false,
+    rating: 4,
+    images: [
+      'img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg',
+      'img/apartment-03.jpg', 'img/studio-01.jpg',
+    ],
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    bedroomsCount: 3,
+    guestsCount: 4,
+    householdItems: [
+      'Wi-Fi', 'Heating', 'Kitchen', 'Fridge',
+    ],
+    owner: {
+      id: 1,
+      avatarImage: 'img/avatar-angelina.jpg',
+      isPro: true,
+      name: 'Angelina',
+    },
+    city: {
+      name: 'Hamburg',
+      location: {
+        latitude: 1,
+        longitude: 1,
+        zoom: 16,
+      },
+    },
+    location: {
+      latitude: 1,
+      longitude: 1,
+      zoom: 16,
+    },
+  },
+  {
+    id: 6,
+    previewImage: 'img/apartment-01.jpg',
+    isPremium: true,
+    price: 120,
+    header: 'Beautiful & luxurious apartment at great location',
+    houseType: HouseType.Apartment,
+    isFavorite: false,
+    rating: 4,
+    images: [
+      'img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg',
+      'img/apartment-03.jpg', 'img/studio-01.jpg',
+    ],
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    bedroomsCount: 3,
+    guestsCount: 4,
+    householdItems: [
+      'Wi-Fi', 'Heating', 'Kitchen', 'Fridge',
+    ],
+    owner: {
+      id: 1,
+      avatarImage: 'img/avatar-angelina.jpg',
+      isPro: true,
+      name: 'Angelina',
+    },
+    city: {
+      name: 'Dusseldorf',
+      location: {
+        latitude: 1,
+        longitude: 1,
+        zoom: 16,
+      },
+    },
+    location: {
+      latitude: 1,
+      longitude: 1,
+      zoom: 16,
     },
   },
 ];
