@@ -28,7 +28,7 @@ function App({hotelsCount, offers, reviews}: AppProps): JSX.Element {
             path={AppRoute.Main}
             element={<MainScreen hotelsCount={hotelsCount}
               offers={offers}
-        />}
+            />}
           />
           <Route
             path={AppRoute.Sign_In}
