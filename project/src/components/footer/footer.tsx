@@ -1,7 +1,7 @@
 function Footer(): JSX.Element {
   return (
     <footer className="footer container">
-      <a className="footer__logo-link" href="main.html">
+      <a className="footer__logo-link" href="/">
         <img
           className="footer__logo"
           src="img/logo.svg"
