@@ -1,12 +1,24 @@
+import {useState} from 'react';
 import OfferCards from '../offer-cards/offer-cards';
-import {Offer} from '../../types/offer';
+import {Offer, City, Offers} from '../../types/offer';
+import Map from '../map/map';
 
 type MainPageProps = {
   hotelsCount: number;
-  offers: Offer[]
+  offers: Offers;
+  city: City
 }
 
-function MainScreen({hotelsCount, offers}: MainPageProps): JSX.Element {
+function MainScreen({hotelsCount, offers, city}: MainPageProps): JSX.Element {
+  const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+
+  const onListItemMouseEnter = (offer: Offer) => {
+    setSelectedOffer(offer);
+  };
+  const onListItemMouseLeave = () => {
+    setSelectedOffer(null);
+  };
+
   return (
     <>
       <div style={{display: 'none'}}>
@@ -89,10 +101,16 @@ function MainScreen({hotelsCount, offers}: MainPageProps): JSX.Element {
                 </form>
                 <OfferCards
                   offers={offers}
+                  onListItemMouseEnter={onListItemMouseEnter}
+                  onListItemMouseLeave={onListItemMouseLeave}
                 />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <Map
+                  city={city}
+                  offers={offers}
+                  selectedOffer={selectedOffer}
+                />
               </div>
             </div>
           </div>

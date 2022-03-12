@@ -7,16 +7,18 @@ import RoomScreen from '../room-screen/room-screen';
 import NotFound from '../not-found/not-found';
 import {AppRoute, AuthorizationStatus} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
-import {Offer} from '../../types/offer';
+import {Offer, City} from '../../types/offer';
 import {Review} from '../../types/review';
+
 
 type AppProps = {
   hotelsCount: number,
   offers: Offer[],
-  reviews: Review[]
+  reviews: Review[],
+  city: City
 };
 
-function App({hotelsCount, offers, reviews}: AppProps): JSX.Element {
+function App({hotelsCount, offers, reviews, city}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -26,7 +28,7 @@ function App({hotelsCount, offers, reviews}: AppProps): JSX.Element {
         >
           <Route
             path={AppRoute.Main}
-            element={<MainScreen hotelsCount={hotelsCount} offers={offers}/>}
+            element={<MainScreen hotelsCount={hotelsCount} offers={offers} city={city}/>}
           />
           <Route
             path={AppRoute.Sign_In}
