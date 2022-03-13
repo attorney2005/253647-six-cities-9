@@ -10,13 +10,13 @@ type MainPageProps = {
 }
 
 function MainScreen({hotelsCount, offers, city}: MainPageProps): JSX.Element {
-  const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+  const [activeOffer, setActiveOffer] = useState<Offer | null>(null);
 
   const onListItemMouseEnter = (offer: Offer) => {
-    setSelectedOffer(offer);
+    setActiveOffer(offer);
   };
   const onListItemMouseLeave = () => {
-    setSelectedOffer(null);
+    setActiveOffer(null);
   };
 
   return (
@@ -106,11 +106,13 @@ function MainScreen({hotelsCount, offers, city}: MainPageProps): JSX.Element {
                 />
               </section>
               <div className="cities__right-section">
-                <Map
-                  city={city}
-                  offers={offers}
-                  selectedOffer={selectedOffer}
-                />
+                <section className="cities__map map">
+                  <Map
+                    city={city}
+                    offers={offers}
+                    activeOffer={activeOffer}
+                  />
+                </section>
               </div>
             </div>
           </div>
