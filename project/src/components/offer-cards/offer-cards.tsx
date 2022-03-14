@@ -1,11 +1,19 @@
-import { Offer } from '../../types/offer';
+import {Offer, Offers} from '../../types/offer';
 import OfferCard from '../offer-card/offer-card';
 
 type OfferCardsProps = {
-  offers: Offer[],
+  offers: Offers,
+  onListItemMouseEnter(offer: Offer): void;
+  onListItemMouseLeave(): void;
 };
 
-function OfferCards({offers}: OfferCardsProps) {
+function OfferCards({offers, onListItemMouseEnter, onListItemMouseLeave}: OfferCardsProps) {
+  const onMouseEnterHandler = (offer: Offer) => {
+    onListItemMouseEnter(offer);
+  };
+  const onMouseLeaveHandler = () => {
+    onListItemMouseLeave();
+  };
   return (
     <div className="cities__places-list places__list tabs__content">
       {
@@ -13,6 +21,8 @@ function OfferCards({offers}: OfferCardsProps) {
           <OfferCard
             key={offer.id}
             offer={offer}
+            onMouseEnterHandler={onMouseEnterHandler}
+            onMouseLeaveHandler={onMouseLeaveHandler}
           />
         ))
       }

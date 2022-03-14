@@ -26,3 +26,16 @@ export const URL_PIN_CURRENT = 'img/pin-active.svg';
 
 export const PIN_WIDTH = 42;
 export const PIN_HEIGHT = 68;
+
+export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+
+export const URL_MARKER_CURRENT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+
+export const CITIES = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf',
+];

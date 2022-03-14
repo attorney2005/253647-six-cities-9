@@ -1,12 +1,24 @@
+import {useState} from 'react';
 import OfferCards from '../offer-cards/offer-cards';
-import {Offer} from '../../types/offer';
+import {Offer, City, Offers} from '../../types/offer';
+import Map from '../map/map';
 
 type MainPageProps = {
   hotelsCount: number;
-  offers: Offer[]
+  offers: Offers;
+  city: City
 }
 
-function MainScreen({hotelsCount, offers}: MainPageProps): JSX.Element {
+function MainScreen({hotelsCount, offers, city}: MainPageProps): JSX.Element {
+  const [activeOffer, setActiveOffer] = useState<Offer | null>(null);
+
+  const onListItemMouseEnter = (offer: Offer) => {
+    setActiveOffer(offer);
+  };
+  const onListItemMouseLeave = () => {
+    setActiveOffer(null);
+  };
+
   return (
     <>
       <div style={{display: 'none'}}>
@@ -89,10 +101,18 @@ function MainScreen({hotelsCount, offers}: MainPageProps): JSX.Element {
                 </form>
                 <OfferCards
                   offers={offers}
+                  onListItemMouseEnter={onListItemMouseEnter}
+                  onListItemMouseLeave={onListItemMouseLeave}
                 />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <section className="cities__map map">
+                  <Map
+                    city={city}
+                    offers={offers}
+                    activeOffer={activeOffer}
+                  />
+                </section>
               </div>
             </div>
           </div>

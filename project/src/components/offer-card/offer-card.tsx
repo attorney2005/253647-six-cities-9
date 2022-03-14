@@ -3,11 +3,18 @@ import { Offer } from '../../types/offer';
 
 type OfferCardProps = {
   offer: Offer
+  onMouseEnterHandler(offer: Offer): void;
+  onMouseLeaveHandler(): void;
 };
 
-function OfferCard({offer}: OfferCardProps) {
+function OfferCard({offer, onMouseEnterHandler, onMouseLeaveHandler}: OfferCardProps) {
   return (
-    <article className="cities__place-card place-card">
+    <article
+      key={offer.id}
+      className="cities__place-card place-card"
+      onMouseEnter={() => onMouseEnterHandler(offer)}
+      onMouseLeave={() => onMouseLeaveHandler()}
+    >
       <div className="place-card__mark">
         <span>Premium</span>
       </div>

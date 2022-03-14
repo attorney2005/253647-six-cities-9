@@ -1,6 +1,6 @@
-import moment from 'moment';
 import { getRatingPercent } from '../../constant';
 import { Review } from '../../types/review';
+import dayjs from 'dayjs';
 
 type ReviewItemProps = {
   review: Review
@@ -35,9 +35,9 @@ function ReviewItem({review}: ReviewItemProps) {
         </p>
         <time
           className="reviews__time"
-          dateTime={moment(review.date).format('YYYY-MM-DD')}
+          dateTime={dayjs(review.date).format('YYYY-MM-DD')}
         >
-          {moment(review.date).format('MMMM YYYY')}
+          {dayjs(review.date).format('MMMM YYYY')}
         </time>
       </div>
     </li>
