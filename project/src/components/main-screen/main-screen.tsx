@@ -1,19 +1,15 @@
 import {useState} from 'react';
 import OfferCards from '../offer-cards/offer-cards';
-import {Offer, City, Offers} from '../../types/offer';
+import {Offer} from '../../types/offer';
 import Map from '../map/map';
 import MainCityList from '../main-city-list/main-city-list';
 import MainSorting from '../main-sorting/main-sorting';
+import {useAppSelector} from '../../hooks';
 
-type MainPageProps = {
-  hotelsCount: number;
-  offers: Offers;
-  city: City
-}
 
-function MainScreen({hotelsCount, offers, city}: MainPageProps): JSX.Element {
+function MainScreen(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Offer | null>(null);
-
+  const {city, offers} = useAppSelector((state) => state);
   const onListItemMouseEnter = (offer: Offer) => {
     setActiveOffer(offer);
   };
