@@ -7,18 +7,15 @@ import RoomScreen from '../room-screen/room-screen';
 import NotFound from '../not-found/not-found';
 import {AppRoute, AuthorizationStatus} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
-import {Offer, City} from '../../types/offer';
 import {Review} from '../../types/review';
-
+import {useAppSelector} from '../../hooks';
 
 type AppProps = {
-  hotelsCount: number,
-  offers: Offer[],
   reviews: Review[],
-  city: City
 };
 
-function App({hotelsCount, offers, reviews, city}: AppProps): JSX.Element {
+function App({reviews}: AppProps): JSX.Element {
+  const {offers} = useAppSelector((state) => state);
   return (
     <BrowserRouter>
       <Routes>
@@ -28,7 +25,7 @@ function App({hotelsCount, offers, reviews, city}: AppProps): JSX.Element {
         >
           <Route
             path={AppRoute.Main}
-            element={<MainScreen hotelsCount={hotelsCount} offers={offers} city={city}/>}
+            element={<MainScreen/>}
           />
           <Route
             path={AppRoute.Sign_In}
