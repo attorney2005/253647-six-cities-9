@@ -31,6 +31,8 @@ export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensi
 
 export const URL_MARKER_CURRENT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
 
+export const TIMEOUT_SHOW_ERROR = 2000;
+
 export const CITIES = [
   'Paris',
   'Cologne',
@@ -45,4 +47,16 @@ export enum SortType {
   PriceAsc = 'Price: low to high',
   PriceDesc = 'Price: high to low',
   RatingDesc = 'Top rated first',
+}
+
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
+}
+
+export enum APIRoute {
+  Offers = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
 }
