@@ -1,4 +1,4 @@
-import {City} from './types/offer';
+import {City, Offers as OffersType} from './types/offer';
 
 export const HOTELS_COUNT = 5;
 
@@ -104,3 +104,22 @@ export const CITIES: City[] = [
     'name': 'Dusseldorf',
   },
 ];
+
+export const getSortedOffersList = (sortType: SortType, [...offersList]: OffersType) => {
+  switch (sortType) {
+    case SortType.PriceAsc:
+      return offersList.sort(
+        (nextOffer, currentOffer) => nextOffer.price - currentOffer.price,
+      );
+    case SortType.PriceDesc:
+      return offersList.sort(
+        (nextOffer, currentOffer) => currentOffer.price - nextOffer.price,
+      );
+    case SortType.RatingDesc:
+      return offersList.sort(
+        (nextOffer, currentOffer) => currentOffer.rating - nextOffer.rating,
+      );
+    default:
+      return offersList;
+  }
+};

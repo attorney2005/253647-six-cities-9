@@ -5,11 +5,12 @@ import Map from '../map/map';
 import MainCityList from '../main-city-list/main-city-list';
 import MainSorting from '../main-sorting/main-sorting';
 import {useAppSelector} from '../../hooks';
+import {getSortedOffersList} from '../../constant';
 
 
 function MainScreen(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Offer | null>(null);
-  const {city, offers} = useAppSelector((state) => state);
+  const {city, cityOffers, sortType} = useAppSelector((state) => state);
   const onListItemMouseEnter = (offer: Offer) => {
     setActiveOffer(offer);
   };
@@ -48,10 +49,10 @@ function MainScreen(): JSX.Element {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in {city.name}</b>
+                <b className="places__found">{cityOffers.length} places to stay in {city.name}</b>
                 <MainSorting/>
                 <OfferCards
-                  offers={offers}
+                  offers={getSortedOffersList(sortType, cityOffers.filter((offer) => offer.city.name === city.name))}
                   onListItemMouseEnter={onListItemMouseEnter}
                   onListItemMouseLeave={onListItemMouseLeave}
                 />
@@ -60,7 +61,7 @@ function MainScreen(): JSX.Element {
                 <section className="cities__map map">
                   <Map
                     city={city}
-                    offers={offers}
+                    offers={cityOffers}
                     activeOffer={activeOffer}
                   />
                 </section>
