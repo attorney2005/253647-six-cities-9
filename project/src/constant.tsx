@@ -1,3 +1,5 @@
+import {City} from './types/offer';
+
 export const HOTELS_COUNT = 5;
 
 export const HOTELS_ARRAY: number[] = Array(HOTELS_COUNT).fill(undefined).map((e, i) => i + 1);
@@ -33,15 +35,6 @@ export const URL_MARKER_CURRENT = 'https://assets.htmlacademy.ru/content/intensi
 
 export const TIMEOUT_SHOW_ERROR = 2000;
 
-export const CITIES = [
-  'Paris',
-  'Cologne',
-  'Brussels',
-  'Amsterdam',
-  'Hamburg',
-  'Dusseldorf',
-];
-
 export enum SortType {
   Default = 'Popular',
   PriceAsc = 'Price: low to high',
@@ -60,3 +53,54 @@ export enum APIRoute {
   Login = '/login',
   Logout = '/logout',
 }
+
+export const CITIES: City[] = [
+  {
+    'location': {
+      'latitude': 50.870216,
+      'longitude': 3.395168,
+      'zoom': 13,
+    },
+    'name': 'Paris',
+  },
+  {
+    'location': {
+      'latitude': 51.370216,
+      'longitude': 3.895168,
+      'zoom': 13,
+    },
+    'name': 'Cologne',
+  },
+  {
+    'location': {
+      'latitude': 51.870216,
+      'longitude': 4.395168,
+      'zoom': 13,
+    },
+    'name': 'Brussels',
+  },
+  {
+    'location': {
+      'latitude': 52.370216,
+      'longitude': 4.895168,
+      'zoom': 13,
+    },
+    'name': 'Amsterdam',
+  },
+  {
+    'location': {
+      'latitude': 52.870216,
+      'longitude': 5.395168,
+      'zoom': 13,
+    },
+    'name': 'Hamburg',
+  },
+  {
+    'location': {
+      'latitude': 53.370216,
+      'longitude': 5.895168,
+      'zoom': 13,
+    },
+    'name': 'Dusseldorf',
+  },
+];

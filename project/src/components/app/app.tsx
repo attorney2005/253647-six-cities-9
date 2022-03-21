@@ -5,17 +5,24 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFound from '../not-found/not-found';
-import {AppRoute, AuthorizationStatus} from '../../constant';
+import {AppRoute} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
 import {Review} from '../../types/review';
 import {useAppSelector} from '../../hooks';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 type AppProps = {
   reviews: Review[],
 };
 
 function App({reviews}: AppProps): JSX.Element {
-  const {offers} = useAppSelector((state) => state);
+  const {authorizationStatus, isDataLoaded, offers} = useAppSelector((state) => state);
+
+  if (!isDataLoaded) {
+    return (
+      <LoadingScreen/>
+    );
+  }
   return (
     <BrowserRouter>
       <Routes>
@@ -38,7 +45,7 @@ function App({reviews}: AppProps): JSX.Element {
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <PrivateRoute  authorizationStatus={authorizationStatus}>
                 <FavoritesScreen
                   offers={offers}
                 />

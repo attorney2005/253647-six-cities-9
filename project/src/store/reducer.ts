@@ -1,9 +1,8 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {changeCity, changeSortType, loadOffers, requireAuthorization, setError} from './action';
-import {CITIES} from '../constant';
-import {offers} from '../mocks/offers';
-import {City, Offers} from '../types/offer';
-import {SortType, AuthorizationStatus} from '../constant';
+import {City, Offers, Offer} from '../types/offer';
+import {SortType, AuthorizationStatus, CITIES} from '../constant';
+import {Reviews} from '../types/review';
 
 const DEFAULT_CITY = CITIES.filter((city) => city.name === 'Paris')[0];
 const DEFAULT_SORT_TYPE = SortType.Default;
@@ -13,7 +12,10 @@ const getCurrentCityOffers = (city: City, offers: Offers): Offers => offers.filt
 type InitialState = {
   city: City,
   offers: Offers,
+  currentOffer: Offer | null,
   cityOffers: Offers,
+  nearOffers: Offers | null,
+  currentOfferComments: Reviews | null,
   sortType: SortType,
   authorizationStatus: AuthorizationStatus,
   isDataLoaded: boolean,
@@ -24,6 +26,9 @@ const initialState: InitialState = {
   city: DEFAULT_CITY,
   offers: [],
   cityOffers: [],
+  currentOffer: null,
+  nearOffers: [],
+  currentOfferComments: [],
   sortType: DEFAULT_SORT_TYPE,
   authorizationStatus: AuthorizationStatus.Unknown,
   isDataLoaded: false,
