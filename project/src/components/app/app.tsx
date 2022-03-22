@@ -1,4 +1,4 @@
-import {Route, BrowserRouter, Routes, Navigate} from 'react-router-dom';
+import {Route, Routes, Navigate} from 'react-router-dom';
 import MainScreen from '../main-screen/main-screen';
 import Layout from '../layout/layout';
 import LoginScreen from '../login-screen/login-screen';
@@ -9,6 +9,8 @@ import {AppRoute, AuthorizationStatus} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
 import {useAppSelector} from '../../hooks';
 import LoadingScreen from '../loading-screen/loading-screen';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 function App(): JSX.Element {
   const {authorizationStatus, isDataLoaded, offers} = useAppSelector((state) => state);
@@ -19,7 +21,7 @@ function App(): JSX.Element {
     );
   }
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -57,8 +59,7 @@ function App(): JSX.Element {
           />
         </Route>
       </Routes>
-    </BrowserRouter>
-
+    </HistoryRouter>
   );
 }
 
