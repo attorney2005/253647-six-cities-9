@@ -3,7 +3,7 @@ import SubmitCommentForm from '../submit-form/submit-form';
 import {useAppSelector} from '../../hooks';
 
 function RoomScreen() {
-  const {nearOffers, currentOffer} = useAppSelector((state) => state);
+  const {currentOffer} = useAppSelector((state) => state);
 
   if (!currentOffer) {
     return <h1>Offer not found</h1>;

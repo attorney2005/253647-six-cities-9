@@ -54,7 +54,8 @@ function LoginScreen(): JSX.Element {
                 type="password"
                 name="password"
                 placeholder="Password"
-                required ref={passwordRef}
+                required
+                ref={passwordRef}
               />
             </div>
             <button className="login__submit form__submit button" type="submit">Sign in</button>
