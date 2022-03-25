@@ -41,7 +41,7 @@ function App(): JSX.Element {
           />
           <Route
             path={AppRoute.Room}
-            element={<RoomScreen/>}
+            element={<RoomScreen offers={offers}/>}
           />
           <Route
             path={AppRoute.Favorites}
