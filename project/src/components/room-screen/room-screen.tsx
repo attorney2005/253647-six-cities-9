@@ -1,20 +1,11 @@
 import {Link} from 'react-router-dom';
-import {useLocation} from 'react-router-dom';
-import {offers} from '../../mocks/offers';
-import {Review} from '../../types/review';
 import SubmitCommentForm from '../submit-form/submit-form';
+import {useAppSelector} from '../../hooks';
 
-type RoomScreenProps = {
-  reviews: Review[]
-};
+function RoomScreen() {
+  const {currentOffer} = useAppSelector((state) => state);
 
-function RoomScreen({reviews}: RoomScreenProps) {
-  const location = useLocation();
-  const pathElements = location.pathname.split('/');
-  const offerId = parseInt(pathElements[pathElements.length - 1], 10);
-  const offer = offers.find((currentOffer) => currentOffer.id === offerId);
-
-  if (!offer) {
+  if (!currentOffer) {
     return <h1>Offer not found</h1>;
   }
 
@@ -25,7 +16,7 @@ function RoomScreen({reviews}: RoomScreenProps) {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               {
-                offer.images.map((image) =>
+                currentOffer.images.map((image) =>
                   (
                     <div
                       className="property__image-wrapper"
@@ -48,7 +39,7 @@ function RoomScreen({reviews}: RoomScreenProps) {
               </div>
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {offer.header}
+                  {currentOffer.header}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -66,24 +57,24 @@ function RoomScreen({reviews}: RoomScreenProps) {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {offer.houseType}
+                  {currentOffer.houseType}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {offer.bedroomsCount} Bedrooms
+                  {currentOffer.bedroomsCount} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max {offer.guestsCount} adults
+                  Max {currentOffer.guestsCount} adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">{offer.price}</b>
+                <b className="property__price-value">{currentOffer.price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
                   {
-                    offer.householdItems.map((household) => (
+                    currentOffer.householdItems.map((household) => (
                       <li
                         className="property__inside-item"
                         key={household}
@@ -99,12 +90,12 @@ function RoomScreen({reviews}: RoomScreenProps) {
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
                     <img className="property__avatar user__avatar"
-                      src={offer.owner.avatarImage}
+                      src={currentOffer.owner.avatarImage}
                       width="74" height="74" alt="Host avatar"
                     />
                   </div>
                   <span className="property__user-name">
-                    {offer.owner.name}
+                    {currentOffer.owner.name}
                   </span>
                   <span className="property__user-status">
                     Pro
@@ -112,7 +103,7 @@ function RoomScreen({reviews}: RoomScreenProps) {
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    {offer.description}
+                    {currentOffer.description}
                   </p>
                   <p className="property__text">
                     An independent House, strategically located between Rembrand Square and National Opera, but where
@@ -134,10 +125,10 @@ function RoomScreen({reviews}: RoomScreenProps) {
             <div className="near-places__list places__list">
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <Link to={`/offer/${offer.id}`}>
+                  <Link to={`/offer/${currentOffer.id}`}>
                     <img
                       className="place-card__image"
-                      src={offer.previewImage}
+                      src={currentOffer.previewImage}
                       width="260"
                       height="200"
                       alt="Place im"
@@ -174,10 +165,10 @@ function RoomScreen({reviews}: RoomScreenProps) {
 
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <Link to={`/offer/${offer.id}`}>
+                  <Link to={`/offer/${currentOffer.id}`}>
                     <img
                       className="place-card__image"
-                      src={offer.previewImage}
+                      src={currentOffer.previewImage}
                       width="260"
                       height="200"
                       alt="Place im"
@@ -215,10 +206,10 @@ function RoomScreen({reviews}: RoomScreenProps) {
                   <span>Premium</span>
                 </div>
                 <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <Link to={`/offer/${offer.id}`}>
+                  <Link to={`/offer/${currentOffer.id}`}>
                     <img
                       className="place-card__image"
-                      src={offer.previewImage}
+                      src={currentOffer.previewImage}
                       width="260"
                       height="200"
                       alt="Place im"

@@ -1,4 +1,4 @@
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, Routes, Navigate} from 'react-router-dom';
 import MainScreen from '../main-screen/main-screen';
 import Layout from '../layout/layout';
 import LoginScreen from '../login-screen/login-screen';
@@ -7,17 +7,21 @@ import RoomScreen from '../room-screen/room-screen';
 import NotFound from '../not-found/not-found';
 import {AppRoute, AuthorizationStatus} from '../../constant';
 import PrivateRoute from '../private-route/private-route';
-import {Review} from '../../types/review';
 import {useAppSelector} from '../../hooks';
+import LoadingScreen from '../loading-screen/loading-screen';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
-type AppProps = {
-  reviews: Review[],
-};
+function App(): JSX.Element {
+  const {authorizationStatus, isDataLoaded, offers} = useAppSelector((state) => state);
 
-function App({reviews}: AppProps): JSX.Element {
-  const {offers} = useAppSelector((state) => state);
+  if (!isDataLoaded) {
+    return (
+      <LoadingScreen/>
+    );
+  }
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -29,16 +33,20 @@ function App({reviews}: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Sign_In}
-            element={<LoginScreen/>}
+            element={
+              (authorizationStatus === AuthorizationStatus.Auth)
+                ? <Navigate to={AppRoute.Main}/>
+                : <LoginScreen/>
+            }
           />
           <Route
             path={AppRoute.Room}
-            element={<RoomScreen reviews={reviews}/>}
+            element={<RoomScreen/>}
           />
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <PrivateRoute  authorizationStatus={authorizationStatus}>
                 <FavoritesScreen
                   offers={offers}
                 />
@@ -51,8 +59,7 @@ function App({reviews}: AppProps): JSX.Element {
           />
         </Route>
       </Routes>
-    </BrowserRouter>
-
+    </HistoryRouter>
   );
 }
 

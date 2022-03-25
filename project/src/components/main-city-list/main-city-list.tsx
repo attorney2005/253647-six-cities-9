@@ -1,5 +1,5 @@
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {CITIES} from '../../mocks/cities';
+import {CITIES} from '../../constant';
 import {changeCity} from '../../store/action';
 
 
