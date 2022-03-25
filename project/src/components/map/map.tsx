@@ -8,7 +8,7 @@ import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../constant';
 type MapProps = {
   city: City;
   offers: Offers;
-  activeOffer: Offer | null;
+  activeOffer: Offer|null;
 }
 
 function Map({city, offers, activeOffer}: MapProps) {
