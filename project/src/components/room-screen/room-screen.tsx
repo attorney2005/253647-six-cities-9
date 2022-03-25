@@ -1,18 +1,15 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../constant';
 import SubmitCommentForm from '../submit-form/submit-form';
-import {Offers} from '../../types/offer';
-// import Map from '../map/map';
+import Map from '../map/map';
 import {
   Navigate,
   useParams
 } from 'react-router-dom';
+import {useAppSelector} from '../../hooks';
 
-type PropertyScreenProps = {
-  offers: Offers;
-}
-
-function RoomScreen({offers}: PropertyScreenProps): JSX.Element {
+function RoomScreen(): JSX.Element {
+  const {offers} = useAppSelector((state) => state);
   const params = useParams();
   const id = Number(params.id);
 
@@ -20,6 +17,7 @@ function RoomScreen({offers}: PropertyScreenProps): JSX.Element {
   if (typeof offer === 'undefined') {
     return <Navigate to={AppRoute.Not_Found} />;
   }
+  const city = offer.city;
 
   return (
     <div className="page">
@@ -130,7 +128,7 @@ function RoomScreen({offers}: PropertyScreenProps): JSX.Element {
             </div>
           </div>
           <section className="property__map map">
-            {/*<Map activeOffer={offer.id}/>*/}
+            <Map activeOffer={offer} city={city} offers={offers}/>
           </section>
         </section>
         <div className="container">
