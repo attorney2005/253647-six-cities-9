@@ -13,7 +13,8 @@ export type User = {
   id: number,
   avatarImage: string,
   name: string,
-  isPro: boolean
+  isPro: boolean,
+  avatarUrl:string
 };
 
 export enum HouseType {
@@ -28,16 +29,16 @@ export type Offer = {
   previewImage: string,
   isPremium: boolean,
   price: number,
-  header: string,
-  houseType: HouseType,
+  title: string,
+  type: HouseType,
   isFavorite: boolean,
   rating: number,
   images: string[],
   description: string,
-  bedroomsCount: number,
-  guestsCount: number,
-  householdItems: string[],
-  owner: User,
+  bedrooms: number,
+  maxAdults: number,
+  goods: string[],
+  host: User,
   city: City,
   location: Location
 };

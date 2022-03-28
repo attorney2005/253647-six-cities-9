@@ -123,3 +123,8 @@ export const getSortedOffersList = (sortType: SortType, [...offersList]: OffersT
       return offersList;
   }
 };
+
+export enum NameSpace {
+  data = 'DATA',
+  user = 'USER',
+}
