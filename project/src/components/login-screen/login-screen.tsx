@@ -6,6 +6,7 @@ import {AuthData} from '../../types/auth-data';
 import {useAppSelector} from '../../hooks';
 import {State} from '../../types/state';
 import {Link} from 'react-router-dom';
+import { memo } from 'react';
 
 function LoginScreen(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -73,4 +74,4 @@ function LoginScreen(): JSX.Element {
   );
 }
 
-export default LoginScreen;
+export default memo(LoginScreen);
