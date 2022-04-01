@@ -1,9 +1,9 @@
 import {SortType} from '../../constant';
-import {changeSortType} from '../../store/action';
+import {changeSortType} from '../../store/data/data';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 
 function MainSorting(): JSX.Element {
-  const {sortType} = useAppSelector((state) => state);
+  const {sortType} = useAppSelector(({DATA}) => DATA);
   const dispatch = useAppDispatch();
 
   return (

@@ -4,7 +4,6 @@ import {useAppDispatch} from '../../hooks';
 import {loginAction} from '../../store/api-actions';
 import {AuthData} from '../../types/auth-data';
 import {useAppSelector} from '../../hooks';
-import {State} from '../../types/state';
 import {Link} from 'react-router-dom';
 import { memo } from 'react';
 
@@ -13,7 +12,7 @@ function LoginScreen(): JSX.Element {
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
 
-  const {city} = useAppSelector((state: State) => state);
+  const {city} = useAppSelector(({DATA}) => DATA);
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
   };

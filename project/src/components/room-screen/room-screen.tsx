@@ -9,7 +9,7 @@ import {
 import {useAppSelector} from '../../hooks';
 
 function RoomScreen(): JSX.Element {
-  const {offers} = useAppSelector((state) => state);
+  const {offers} = useAppSelector(({DATA}) => DATA);
   const params = useParams();
   const id = Number(params.id);
 
