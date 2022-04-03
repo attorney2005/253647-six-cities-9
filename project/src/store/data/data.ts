@@ -2,7 +2,6 @@ import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace, SortType, CITIES} from '../../constant';
 import {Data} from '../../types/state';
 import {City, Offers} from '../../types/offer';
-// import {changeCity, changeSortType, loadComments, loadNearOffers, loadOffer, loadOffers, setError} from "../action";
 
 const DEFAULT_CITY = CITIES.filter((city) => city.name === 'Paris')[0];
 const DEFAULT_SORT_TYPE = SortType.Default;

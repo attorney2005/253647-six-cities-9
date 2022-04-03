@@ -57,48 +57,48 @@ export enum APIRoute {
 export const CITIES: City[] = [
   {
     'location': {
-      'latitude': 50.870216,
-      'longitude': 3.395168,
+      'latitude': 48.861798,
+      'longitude': 2.339973,
       'zoom': 13,
     },
     'name': 'Paris',
   },
   {
     'location': {
-      'latitude': 51.370216,
-      'longitude': 3.895168,
+      'latitude': 50.943998,
+      'longitude': 6.954206,
       'zoom': 13,
     },
     'name': 'Cologne',
   },
   {
     'location': {
-      'latitude': 51.870216,
-      'longitude': 4.395168,
+      'latitude': 50.850689,
+      'longitude': 4.358463,
       'zoom': 13,
     },
     'name': 'Brussels',
   },
   {
     'location': {
-      'latitude': 52.370216,
-      'longitude': 4.895168,
+      'latitude': 52.362067,
+      'longitude': 4.868641,
       'zoom': 13,
     },
     'name': 'Amsterdam',
   },
   {
     'location': {
-      'latitude': 52.870216,
-      'longitude': 5.395168,
+      'latitude': 53.598829,
+      'longitude': 9.998967,
       'zoom': 13,
     },
     'name': 'Hamburg',
   },
   {
     'location': {
-      'latitude': 53.370216,
-      'longitude': 5.895168,
+      'latitude': 51.222094,
+      'longitude': 6.774878,
       'zoom': 13,
     },
     'name': 'Dusseldorf',

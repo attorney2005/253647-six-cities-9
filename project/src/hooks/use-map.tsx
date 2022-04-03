@@ -28,6 +28,15 @@ function useMap(mapRef: MutableRefObject<null>, city: City) {
     }
   }, [mapRef, map, city]);
 
+  useEffect(() => {
+    if (map !== null) {
+      map.flyTo({
+        lat: city.location.latitude,
+        lng: city.location.longitude,
+      }, city.location.zoom, {duration: 0.9});
+    }
+  }, [city, map]);
+
   return map;
 }
 
