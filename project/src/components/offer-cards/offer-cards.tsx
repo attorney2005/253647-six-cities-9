@@ -1,5 +1,6 @@
 import {Offer, Offers} from '../../types/offer';
 import OfferCard from '../offer-card/offer-card';
+import {memo} from 'react';
 
 type OfferCardsProps = {
   offers: Offers,
@@ -11,9 +12,11 @@ function OfferCards({offers, onListItemMouseEnter, onListItemMouseLeave}: OfferC
   const onMouseEnterHandler = (offer: Offer) => {
     onListItemMouseEnter(offer);
   };
+
   const onMouseLeaveHandler = () => {
     onListItemMouseLeave();
   };
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {
@@ -30,4 +33,4 @@ function OfferCards({offers, onListItemMouseEnter, onListItemMouseLeave}: OfferC
   );
 }
 
-export default OfferCards;
+export default memo(OfferCards);

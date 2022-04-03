@@ -14,7 +14,7 @@ type MapProps = {
 function Map({city, offers, activeOffer}: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
-  console.log(activeOffer);
+
   const defaultCustomIcon = leaflet.icon({
     iconUrl: URL_MARKER_DEFAULT,
     iconSize: [40, 40],
@@ -28,7 +28,7 @@ function Map({city, offers, activeOffer}: MapProps) {
   });
   useEffect(() => {
     if (!map) {
-      return
+      return;
     }
     const markers: leaflet.Marker[] = [];
 

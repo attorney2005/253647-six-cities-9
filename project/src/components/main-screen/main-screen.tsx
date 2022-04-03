@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import OfferCards from '../offer-cards/offer-cards';
 import {Offer} from '../../types/offer';
 import Map from '../map/map';
@@ -11,14 +11,15 @@ import {getSortedOffersList} from '../../constant';
 function MainScreen(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Offer | null>(null);
   const {city, cityOffers, sortType} = useAppSelector(({DATA}) => DATA);
-  const onListItemMouseEnter = (offer: Offer) => {
-    setActiveOffer(offer);
-  };
-  const onListItemMouseLeave = () => {
-    setActiveOffer(null);
-  };
-
   const sortedOffersList = useMemo(() => getSortedOffersList(sortType, cityOffers), [cityOffers, sortType]);
+
+  const onListItemMouseEnter = useCallback((offer: Offer) => {
+    setActiveOffer(offer);
+  }, []);
+
+  const onListItemMouseLeave = useCallback(() => {
+    setActiveOffer(null);
+  }, []);
 
   return (
     <>
