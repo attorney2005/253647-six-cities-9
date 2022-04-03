@@ -8,13 +8,13 @@ import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../constant';
 type MapProps = {
   city: City;
   offers: Offers;
-  activeOffer: Offer|null;
+  activeOffer: Offer | null;
 }
 
 function Map({city, offers, activeOffer}: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
-
+  console.log(activeOffer);
   const defaultCustomIcon = leaflet.icon({
     iconUrl: URL_MARKER_DEFAULT,
     iconSize: [40, 40],
@@ -27,27 +27,30 @@ function Map({city, offers, activeOffer}: MapProps) {
     iconAnchor: [20, 40],
   });
   useEffect(() => {
+    if (!map) {
+      return
+    }
     const markers: leaflet.Marker[] = [];
 
-    if (map) {
-      offers.forEach((offer) => {
-        const marker = leaflet
-          .marker({
-            lat: offer.location.latitude,
-            lng: offer.location.longitude,
-          }, {
-            icon: (activeOffer && offer.location.latitude === activeOffer.location.latitude && offer.location.longitude === activeOffer.location.longitude)
-              ? currentCustomIcon
-              : defaultCustomIcon,
-          });
-        marker.addTo(map);
-        markers.push(marker);
-      });
-      return () => markers.forEach((marker) => {
-        marker.removeFrom(map);
-      });
-    }
-  }, [map, offers]);
+    offers.forEach((offer) => {
+      const marker = leaflet
+        .marker({
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
+        }, {
+          icon: (activeOffer && offer.location.latitude === activeOffer.location.latitude && offer.location.longitude === activeOffer.location.longitude)
+            ? currentCustomIcon
+            : defaultCustomIcon,
+        });
+      marker.addTo(map);
+      markers.push(marker);
+    });
+
+    return () => markers.forEach((marker) => {
+      marker.removeFrom(map);
+    });
+
+  }, [map, offers, activeOffer]);
 
   return (
     <div
