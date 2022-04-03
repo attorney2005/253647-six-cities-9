@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useMemo, useState} from 'react';
 import OfferCards from '../offer-cards/offer-cards';
 import {Offer} from '../../types/offer';
 import Map from '../map/map';
@@ -17,6 +17,8 @@ function MainScreen(): JSX.Element {
   const onListItemMouseLeave = () => {
     setActiveOffer(null);
   };
+
+  const sortedOffersList = useMemo(() => getSortedOffersList(sortType, cityOffers), [cityOffers, sortType]);
 
   return (
     <>
@@ -52,7 +54,7 @@ function MainScreen(): JSX.Element {
                 <b className="places__found">{cityOffers.length} places to stay in {city.name}</b>
                 <MainSorting/>
                 <OfferCards
-                  offers={getSortedOffersList(sortType, cityOffers.filter((offer) => offer.city.name === city.name))}
+                  offers={sortedOffersList}
                   onListItemMouseEnter={onListItemMouseEnter}
                   onListItemMouseLeave={onListItemMouseLeave}
                 />
